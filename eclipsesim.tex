@@ -1,0 +1,167 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{siunitx}
+
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+\title{HamSCI: Eclipse Simulator Documentation}
+\author{Joshua S. Vega, WB2JSV\\ New Jersey Insitute of Technology}
+\date{\textit{Last Updated: \today}}
+
+\begin{document}
+\begin{center}
+  {\scshape\Large HamSCI: Eclipse Simulator Documentation\par}
+  \vspace{1em}
+  {\large Joshua S. Vega, WB2JSV\par}
+  \vspace{1em}
+  {\itshape\large Last Updated: \today\par}
+\end{center}
+
+\tableofcontents
+
+\newpage
+
+%
+% INTRODUCTION
+%
+\section{Introduction}
+\label{sec:introduction}
+
+HamSCI's eclipse simulator (colloquially known as ``\texttt{eclipsesim}'') is a
+software package developed by members of the HamSCI team at the New Jersey
+Institute of Technology used to simulate HF (3-30 $\si{\mega\hertz}$) through
+the ionosphere. Specifically, the package was developed in order to simulate the
+effects of the August 21, 2017 total solar eclipse on HF amateur ``ham'' radio
+communications. The bulk of the package is developed in MATLAB. However, the
+inputs and outputs are both in the comma-separated values (CSV) format in order
+to allow for easy interoperability with other analysis tools (such as those
+written in Python, R, or Julia).
+
+This document is written in order to provide the reader with an understand of
+the inner workings of the simulation package as well as justify some of the
+design decisions that were made during development. In addition, this document
+is intended to be used as a helpful guide to using the package. Because of this,
+as the package undergoes future changes, so too should this document in order to
+maintain parity between the package and its documentation.
+
+%
+% DEPENDENCIES
+%
+\section{Dependencies}
+\label{sec:dependencies}
+
+The \texttt{eclipsesim} package relies on a few third-party dependencies in
+order to implement some specialized functionality. This section provides a brief
+overview of the different dependencies and their function.
+
+\subsection{PHaRLAP}
+\label{sec:dependencies:pharlap}
+
+PHaRLAP\footnotemark is a robust HF raytracing toolkit developed by Dr. Manuel
+Cervera of the Defence Science and Technology Group, Australia. It is used to
+compute the actual ray paths of radio transmission from transmitter to
+receiver. More information on how it is used is provided in
+\autoref{sec:design}. Although the core of the toolkit is written in FORTRAN, a
+MATLAB application programming interface (API) is provided. PHaRLAP also
+provides a simple API for the IRI (see below) that is compatible with the ray
+path computation API.
+
+\footnotetext{\itshape``The results published in this paper were obtained using
+  the HF propagation toolbox, PHaRLAP, created by Dr. Manuel Cervera, Defence
+  Science and Technology Group, Australia
+  (manuel.cervera@dsto.defence.gov.au). This toolbox is available by request
+  from its author.''}
+
+\subsection{IRI}
+\label{sec:dependencies:iri}
+
+The International Reference Ionosphere (IRI)\footnotemark is a ionospheric model
+developed by the Committee on Space Research (COSPAR) and International Union of
+Radio Science (URSI). It is periodically updated to incorporate new
+measurements. It generates monthly averages for several ionospheric measurements
+including electron density, and electron and ion temperatures.
+
+\footnotetext{\url{http://irimodel.org/}}
+
+\subsection{SAMI3}
+\label{sec:dependencies:sami3}
+
+%
+% USAGE
+%
+\section{Usage}
+\label{sec:usage}
+
+The \texttt{eclipsesim} package provides two methods of execution
+out-of-the-box: serially and in parallel. More information and specific
+instructions on each execution method is discussed in \autoref{sec:usage:serial}
+and \autoref{sec:usage:parallel}, respectively.
+
+Regardless of the execution method used, \texttt{eclipsesim} is designed to be
+executed on a Linux-based machine. While limited success has been achieved on
+other operating systems (notably, Microsoft Windows), the execution scripts are
+developed with Linux in mind and may not execute as expected in incompatible
+environments. All instructions provided in this section are therefore intended
+for Linux-based systems and may require modification for other operating
+systems.
+
+\subsection{Serial}
+\label{sec:usage:serial}
+
+\subsection{Parallel}
+\label{sec:usage:parallel}
+
+\subsection{Input}
+\label{sec:usage:input}
+
+\subsection{Output}
+\label{sec:usage:output}
+
+%
+% DESIGN
+%
+\section{Design}
+\label{sec:design}
+
+\subsection{Rough Pass}
+\label{sec:design:rough}
+
+\subsection{Fine Pass}
+\label{sec:design:fine}
+
+\subsection{Plotting}
+\label{sec:design:plotting}
+
+%
+% EXTENSIONS
+%
+\section{Extensions}
+\label{sec:extensions}
+
+\subsection{``10-hop''}
+\label{sec:extensions:10hop}
+
+%
+% CONCLUSION
+%
+\section{Conclusion}
+\label{sec:conclusion}
+
+%
+% REFERENCES
+%
+\section{References}
+\label{sec:references}
+
+\end{document}
