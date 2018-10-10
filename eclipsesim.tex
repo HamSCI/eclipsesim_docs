@@ -1,10 +1,18 @@
 \documentclass[12pt,letterpaper]{article}
 \usepackage[margin=1in]{geometry}
 
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
 \usepackage{siunitx}
+
+\usepackage{natbib}
+\usepackage[nottoc]{tocbibind}
 
 \usepackage[T1]{fontenc}
 \usepackage{mathptmx}
+
+\usepackage{appendix}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -14,10 +22,6 @@
   linkcolor=black,
   urlcolor=black
 }
-
-\title{HamSCI: Eclipse Simulator Documentation}
-\author{Joshua S. Vega, WB2JSV\\ New Jersey Insitute of Technology}
-\date{\textit{Last Updated: \today}}
 
 \begin{document}
 \begin{center}
@@ -97,6 +101,15 @@ including electron density, and electron and ion temperatures.
 \subsection{SAMI3}
 \label{sec:dependencies:sami3}
 
+SAMI3 is a three-dimensional global ionosphere model developed by the U.S. Naval
+Research Laboratory (NRL). In 2017, Joseph D. Huba and Douglas Drob published a
+paper detailing a modified SAMI3 model that simulated effects of the August 21,
+2017 eclipse on the ionosphere \citep{Huba2017}. This model was provided to
+HamSCI by Joseph Huba and have since been the {\it de facto} ionosphere model
+for eclipse simulations. For more information on SAMI3's data structure and how
+it has been integrated into the eclipse simulation, see
+\hyperref[sec:sami3_df]{Appendix B}.
+
 %
 % USAGE
 %
@@ -144,15 +157,6 @@ systems.
 \label{sec:design:plotting}
 
 %
-% EXTENSIONS
-%
-\section{Extensions}
-\label{sec:extensions}
-
-\subsection{``10-hop''}
-\label{sec:extensions:10hop}
-
-%
 % CONCLUSION
 %
 \section{Conclusion}
@@ -161,7 +165,27 @@ systems.
 %
 % REFERENCES
 %
-\section{References}
-\label{sec:references}
+\renewcommand{\bibname}{References}
+\bibliographystyle{abbrvnat}
+\bibliography{eclipsesim}
+
+\begin{appendices}
+
+  % 
+  % EXTENSIONS
+  % 
+  \section{Extensions}
+  \label{sec:extensions}
+
+  \subsection{``10-hop''}
+  \label{sec:extensions:10hop}
+
+  % 
+  % SAMI3 DATA FORMAT
+  % 
+  \section{SAMI3 Data Format}
+  \label{sec:sami3_df}
+
+\end{appendices}
 
 \end{document}
