@@ -129,8 +129,58 @@ environments. All instructions provided in this section are therefore intended
 for Linux-based systems and may require modification for other operating
 systems.
 
+\subsection{Setup}
+\label{sec:usage:setup}
+
+Before the eclipse simulation can be run, all external dependencies must be
+accessible to the simulation program. This section briefly describes what
+dependencies are required and how they must be configured. Some extension
+version of the simulation program may require additional dependencies. Please
+refer to \hyperref[sec:extensions]{Appendix A} for extension-specific dependency
+information.
+
+{\bf MATLAB}: Since all computation is executed in MATLAB, it should come as no
+surprise that the most important dependency is MATLAB itself. The simulation is
+primarily designed to execute on version 2016a however later versions should
+also be compatible. When using older versions of MATLAB some compilation and
+runtime errors have been seen to occur due to breaking changes between older
+version and 2016a or later. Once MATLAB has been installed, it's important to
+ensure that the {\tt matlab} program is available for execution through a
+modified {\tt \$PATH} variable.
+
+{\bf PHaRLAP}: As described in \autoref{sec:dependencies:pharlap}, PHaRLAP is a
+vital part of the simulation program. Due to the restrictions on the
+distribution of PHaRLAP, it is not and should not be directly distributed with
+any of the eclipse simulation versions. Instead, it is recommended that
+prospective users of the simulation tool contant the author of PHaRLAP and
+receive a direct copy. Once a copy of PHaRLAP is acquired, it can be installed
+anywhere that is accessible to the simulation tool as long as the {\tt
+  PHARLAP\_DIR} variable is updated appropriately in the execution script.
+
+{\bf IRI}: If the IRI will be used as the ionosphere model there is no need to
+install any additional dependencies as it is already integrated into
+PHaRLAP. However, keep in mind that with most version of the simulation tool
+being designed for SAMI3, some modification of the simulation code will be
+required.
+
+{\bf SAMI3}: If SAMI3 will be used as the ionosphere model, then there are a few
+steps required in order to prepare it to work with the simulation tool. After
+acquiring the SAMI3 model it must be converted from the raw data format to the
+{\tt *.m} file format which is far more efficient for MATLAB to load and
+parse. For detailed information about this step, refer to
+\hyperref[sec:sami3_df]{Appendix B}. Once it has been properly converted, the
+SAMI3 {\tt *.m} file(s) must be placed in a directory that is accessible to the
+simulation program. Be sure to update the {\tt SAMI3\_PATH} variable
+appropriately in the execution script.
+
 \subsection{Serial}
 \label{sec:usage:serial}
+
+The serial execution model is designed for testing or very short
+simulations. The serial execution model only executes the simulation for a
+single point in time. This can obviously be adjusted by modifying the bash
+execution script. However for this sample, it is assumed that only one time-step
+is being simulated.
 
 \subsection{Parallel}
 \label{sec:usage:parallel}
