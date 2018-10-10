@@ -9,6 +9,9 @@
 \usepackage{natbib}
 \usepackage[nottoc]{tocbibind}
 
+\usepackage{xcolor}
+\usepackage{listings}
+
 \usepackage[T1]{fontenc}
 \usepackage{mathptmx}
 
@@ -180,7 +183,25 @@ The serial execution model is designed for testing or very short
 simulations. The serial execution model only executes the simulation for a
 single point in time. This can obviously be adjusted by modifying the bash
 execution script. However for this sample, it is assumed that only one time-step
-is being simulated.
+is being simulated. It is also assumed that all dependencies have been properly
+installed and configured and that the appropriate modifications have been made
+to the execution script.
+
+To execute the simulation tool in serial mode, you'll be executing the {\tt
+  eclipsesim\_local.sh} file in as bash script without any arguments (ensure
+that it has been configured to have the execution permissions bit enabled):
+
+\begin{lstlisting}[language=bash]
+  $ ./eclipsesim_local.sh
+\end{lstlisting}
+
+This script will the first job file available in the input directory (see
+\autoref{sec:usage:input} for information on inputting data to the simulation
+tool). When the simulation is complete the terminal will be prepared for a new
+command and the outputted data will be available in the output directory (see
+\autoref{sec:usage:output} for information on outputting data from the
+simulation tool). If an error occured during the simulation, MATLAB will halt
+and indicate where in the MATLAB code the error occurred.
 
 \subsection{Parallel}
 \label{sec:usage:parallel}
