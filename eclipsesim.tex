@@ -227,6 +227,17 @@ respectively). Below is an example of submitting a job to SGE:
   $ qsub ./eclipsesim_sge.sh
 \end{lstlisting}
 
+This command will submit the job file to the SGE queue. Once the job has been
+selected for execution, it will ensure that MATLAB is loaded and then begin the
+process of preparing the simulation for execution (this step is identical to the
+equivalent step in the serial execution model). Due to the parallel nature of
+this execution model, no response will be printed to the terminal. Instead, a
+log file for each job submitted job (if the job is an array job, one log file
+will be generated for each sub-job) containing all output information for that
+individual job (or sub-job). For this reason it is not recommended that the
+simulation be tested or debugged in the parallel execution mode (unless it is
+directly related to the parallel nature of the execution).
+
 \subsection{Input}
 \label{sec:usage:input}
 
