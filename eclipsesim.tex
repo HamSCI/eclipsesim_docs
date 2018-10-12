@@ -206,6 +206,27 @@ and indicate where in the MATLAB code the error occurred.
 \subsection{Parallel}
 \label{sec:usage:parallel}
 
+The parallel execution model is designed to be executed on a computing cluster
+running a Sun Grid Engine (SGE; now Oracle Grid Engine) compatible scheduling
+system. One such system is Son of Grid Engine (also SGE). When submitting a job,
+SGE adds it to the job queue. When a compute node with the requested resources
+is made available, the next job is assigned to be executed on said node. SGE
+also allows multiple compute nodes to be requested by one job using the array
+option. For more information about the many options made available to jobs,
+please refer to both the SGE documentation as well as any cluster-specific
+documentation.
+
+To execute the simulation tool in parallel mode, you'll be executing the {\tt
+  eclipsesim\_sge.sh} file as an argument to the {\tt qsub}
+application. Depending on the specific variant of the simulation tool, there may
+or may not be specific eclipse and non-eclipse SGE execution scripts (such as
+{\tt eclipsesim\_sge\_eclipse.sh} and {\tt eclipsesim\_sge\_base.sh},
+respectively). Below is an example of submitting a job to SGE:
+
+\begin{lstlisting}[language=bash]
+  $ qsub ./eclipsesim_sge.sh
+\end{lstlisting}
+
 \subsection{Input}
 \label{sec:usage:input}
 
@@ -236,10 +257,12 @@ and indicate where in the MATLAB code the error occurred.
 %
 % REFERENCES
 %
+\newpage
 \renewcommand{\bibname}{References}
 \bibliographystyle{abbrvnat}
 \bibliography{eclipsesim}
 
+\newpage
 \begin{appendices}
 
   % 
