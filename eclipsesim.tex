@@ -17,6 +17,9 @@
 
 \usepackage{appendix}
 
+\usepackage{tabulary}
+\usepackage{multirow}
+
 \usepackage{hyperref}
 \hypersetup{
   colorlinks,
@@ -240,6 +243,48 @@ directly related to the parallel nature of the execution).
 
 \subsection{Input}
 \label{sec:usage:input}
+
+In order for the simulation tool to execute, it requires some input data. This
+data is usually in the form of a transmitting station location, receiving
+station location, frequency, and time of exchange. Because the simultion is
+divided into timestamps, the time of exchange is encoded into the input
+filename. This is done using the format {\tt ``<YYYY>-<MM>-<DD>
+  <HH>:<mm>:<ss>.csv''} (e.g. ``2017-08-21 16:00:00.csv'' for August 21, 2017 at
+4:00 PM UTC).
+
+Within the input file, the remainder of the input data is stored. This is done
+by entering the data as rows into the file using the Comma-Separated Values
+(CSV) format. The first line of file should be {\tt
+  ``tx\_call,rx\_call,tx\_lat,tx\_lon,rx\_lat,rx\_lon,freq''} (this may vary
+based on the simulation tool version; some versions do not use the {\tt freq}
+column). Each row follows the following format:
+
+\begin{center}
+  \begin{tabulary}{\linewidth}{| L | L | L | L |}
+    \hline
+    {\bf Name} & {\bf Datatype} & {\bf Description} & {\bf Example}\\\hline
+    {\tt tx\_call} & \multirow{2}{*}{alphanumeric string} & The name (or callsign) of the tx station & {\tt AK6VS}\\\cline{1-1}\cline{3-4}
+    {\tt rx\_call} & & The name (or callsign) of the rx station & {\tt N6NC}\\\hline
+    {\tt tx\_lat} & \multirow{5}{*}{floating-point number} & The latitude of the tx station & {\tt 37.71}\\\cline{1-1}\cline{3-4}
+    {\tt tx\_lon} & & The longitude of the tx station & {\tt -122.50}\\\cline{1-1}\cline{3-4}
+    {\tt rx\_lat} & & The latitude of the rx station & {\tt 32.83}\\\cline{1-1}\cline{3-4}
+    {\tt rx\_lon} & & The longitude of the rx station & {\tt -117.33}\\\cline{1-1}\cline{3-4}
+    {\tt freq} & & The frequency of the transmission in $\si{\mega\hertz}$ & {\tt 14.03}\\\hline
+  \end{tabulary}
+\end{center}
+
+Below is an example row from an input file:
+
+\begin{center}
+  {\tt AK6VS,N6NC,37.71,-122.50,32.83,-117.33,14.03}
+\end{center}
+
+Once the correct input files have been created (or possibly generated), they
+should be placed into the {\tt ./jobs} sub-directory of the simulation tool's
+directory. If no such directory exists, the specific version of the simulation
+tool may use another method of inputting data. In such cases, please refer to
+\autoref{sec:extensions} or to the accompanying {\tt README} file for the
+simulation tool.
 
 \subsection{Output}
 \label{sec:usage:output}
