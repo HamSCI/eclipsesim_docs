@@ -286,6 +286,65 @@ directory.
 \subsection{Output}
 \label{sec:usage:output}
 
+PHaRLAP outputs a wide array of simulation values for each simulated
+ray. However, for the purposes of this simulation tool, only the values related
+to the ``best'' ray-path between the transmitting station and receiving station
+are taken into account. Yet still there are many outputted values that are
+recorded into the output CSV files. \autoref{tbl:output_fields} details them.
+
+\begin{table}
+  \centering
+
+  \begin{tabulary}{\linewidth}{| L | L |}
+    \hline
+    
+    %
+    % Station Information
+    %
+    {\tt tx\_call} & ...\\\hline
+    {\tt rx\_call} & ...\\\hline
+    {\tt tx\_lat} & ...\\\hline
+    {\tt tx\_lon} & ...\\\hline
+    {\tt rx\_lat} & ...\\\hline
+    {\tt rx\_lon} & ...\\\hline
+    {\tt freq} & ...\\\hline
+
+    %
+    % Simulation Results
+    %
+    {\tt srch\_rd\_lat} & ...\\\hline
+    {\tt srch\_rd\_lon} & ...\\\hline
+    {\tt srch\_rd\_ground\_range} & ...\\\hline
+    {\tt srch\_rd\_group\_range} & ...\\\hline
+    {\tt srch\_rd\_phase\_path} & ...\\\hline
+    {\tt srch\_rd\_geometric\_path\_length} & ...\\\hline
+    {\tt srch\_rd\_initial\_elev} & ...\\\hline
+    {\tt srch\_rd\_final\_elev} & ...\\\hline
+    {\tt srch\_rd\_apogee} & ...\\\hline
+    {\tt srch\_rd\_gnd\_rng\_to\_apogee} & ...\\\hline
+    {\tt srch\_rd\_plasma\_freq\_at\_apogee} & ...\\\hline
+    {\tt srch\_rd\_virtual\_height} & ...\\\hline
+    {\tt srch\_rd\_effective\_range} & ...\\\hline
+    {\tt srch\_rd\_deviative\_absorption} & ...\\\hline
+    {\tt srch\_rd\_TEC\_path} & ...\\\hline
+    {\tt srch\_rd\_Doppler\_shift} & ...\\\hline
+    {\tt srch\_rd\_Doppler\_spread} & ...\\\hline
+    {\tt srch\_rd\_FAI\_backscatter\_loss} & ...\\\hline
+    {\tt srch\_rd\_frequency} & ...\\\hline
+    {\tt srch\_rd\_nhops\_attempted} & ...\\\hline
+    {\tt srch\_rd\_rx\_power\_0\_dB} & ...\\\hline
+    {\tt srch\_rd\_rx\_power\_dB} & ...\\\hline
+    {\tt srch\_rd\_power\_O\_dB} & ...\\\hline
+    {\tt srch\_rd\_power\_X\_dB} & ...\\\hline
+    {\tt srch\_rd\_hop\_idx} & ...\\\hline
+    {\tt srch\_rd\_apogee\_lat} & ...\\\hline
+    {\tt srch\_rd\_apogee\_lon} & ...\\\hline
+  \end{tabulary}
+
+  \caption{The output data fields for the simulation.}
+  \label{tbl:output_fields}
+\end{table}
+
 %
 % DESIGN
 %
