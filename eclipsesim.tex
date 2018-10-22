@@ -353,6 +353,18 @@ indicates the time at which the simulation was executed using the form {\tt
   ``simulated\_<YYYY>-<MM>-<DD>\_<HH>-<mm>.csv''} (e.g. {\tt
   ``simulated\_2017-08-21\_16-00.csv''} for August 21, 2017 at 4:00 PM UTC).
 
+It's important to remember that each row is not a unique ray-trace. Instead, a
+row only provides the information relevant to a single hop of a
+ray-trace. Therefore, if for example a ray required 3 hops to travel the
+distance between the transmitter and receiver then 3 rows will appear in the
+output file. In this case, the {\tt srch\_rd\_hop\_idx} field will indicate the
+order in which the hops occurred (e.g. 1 being the first hop and 3 being the
+last). In this case, it's also important to realize that the field {\tt
+  srch\_rd\_nhops\_attempted} is not necessarily the number of resulting number
+of rows that will appear in the output file. If the maximum number of hops is
+set at 10 for example, but only 3 hops are needed then only 3 rows will appear
+for that ray-trace.
+
 %
 % DESIGN
 %
@@ -384,26 +396,11 @@ indicates the time at which the simulation was executed using the form {\tt
 
 \newpage
 \begin{appendices}
-
-  % 
-  % EXTENSIONS
-  % 
-  \section{Extensions}
-  \label{sec:extensions}
-
-  \subsection{10-Hop}
-  \label{sec:extensions:10hop}
-
-  \subsection{TAPR DCC 2017}
-  \label{sec:extensions:dcc2017}
-
-  \subsection{W2NAF}
-  \label{sec:extensions:w2naf}
-
+  
   % 
   % SAMI3 DATA FORMAT
   % 
-  \section{SAMI3 Data Format}
+  \section{Appendix: SAMI3 Data Format}
   \label{sec:sami3_df}
 
 \end{appendices}
