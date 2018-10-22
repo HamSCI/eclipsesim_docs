@@ -219,12 +219,8 @@ option. For more information about the many options made available to jobs,
 please refer to both the SGE documentation as well as any cluster-specific
 documentation.
 
-To execute the simulation tool in parallel mode, you'll be executing the {\tt
-  eclipsesim\_sge.sh} file as an argument to the {\tt qsub}
-application. Depending on the specific variant of the simulation tool, there may
-or may not be specific eclipse and non-eclipse SGE execution scripts (such as
-{\tt eclipsesim\_sge\_eclipse.sh} and {\tt eclipsesim\_sge\_base.sh},
-respectively). Below is an example of submitting a job to SGE:
+To execute the simulation tool in parallel mode, execute the {\tt
+  eclipsesim\_sge.sh} file as an argument to the {\tt qsub} application.
 
 \begin{lstlisting}[language=bash]
   $ qsub ./eclipsesim_sge.sh
@@ -249,28 +245,33 @@ data is usually in the form of a transmitting station location, receiving
 station location, frequency, and time of exchange. Because the simultion is
 divided into timestamps, the time of exchange is encoded into the input
 filename. This is done using the format {\tt ``<YYYY>-<MM>-<DD>
-  <HH>:<mm>:<ss>.csv''} (e.g. ``2017-08-21 16:00:00.csv'' for August 21, 2017 at
-4:00 PM UTC).
+  <HH>:<mm>:<ss>.csv''} (e.g. {\tt ``2017-08-21 16:00:00.csv''} for August 21,
+2017 at 4:00 PM UTC).
 
 Within the input file, the remainder of the input data is stored. This is done
 by entering the data as rows into the file using the Comma-Separated Values
 (CSV) format. The first line of file should be {\tt
-  ``RX\_CALL,TX\_CALL,MHZ,RX\_LAT,RX\_LON,TX\_LAT,TX\_LON''}. Each following row
-uses the format:
+  ``RX\_CALL,TX\_CALL,MHZ,RX\_LAT,RX\_LON,TX\_LAT,TX\_LON''}. \autoref{tbl:input_fields}
+shows the different input fields (all fields are required).
 
-\begin{center}
+\begin{table}
+  \centering
+  
   \begin{tabulary}{\linewidth}{| L | L | L | L |}
     \hline
     {\bf Name} & {\bf Datatype} & {\bf Description} & {\bf Example}\\\hline
-    {\tt RX\_CALL} & \multirow{2}{*}{alphanumeric string} & The name (or callsign) of the rx station & {\tt WE9V}\\\cline{1-1}\cline{3-4}
-    {\tt TX\_CALL} &                                      & The name (or callsign) of the tx station & {\tt N8PW}\\\hline
-    {\tt MHZ} & \multirow{5}{*}{floating-point number} & The frequency of the transmission in $\si{\mega\hertz}$ & {\tt 7.03}\\\cline{1-1}\cline{3-4}
-    {\tt RX\_LAT} &                                    & The latitude of the rx station & {\tt 42.5625}\\\cline{1-1}\cline{3-4}
-    {\tt RX\_LON} &                                    & The longitude of the rx station & {\tt -88.0417}\\\cline{1-1}\cline{3-4}
-    {\tt TX\_LAT} &                                    & The latitude of the tx station & {\tt 40.8542}\\\cline{1-1}\cline{3-4}
-    {\tt TX\_LON} &                                    & The longitude of the tx station & {\tt -81.3750}\\\hline
+    {\tt RX\_CALL} & \multirow{2}{*}{alphanumeric string} & The name (or callsign) of the RX station. & {\tt WE9V}\\\cline{1-1}\cline{3-4}
+    {\tt TX\_CALL} &                                      & The name (or callsign) of the TX station. & {\tt N8PW}\\\hline
+    {\tt MHZ} & \multirow{5}{*}{floating-point number} & The frequency of the transmission in $\si{\mega\hertz}$. & {\tt 7.03}\\\cline{1-1}\cline{3-4}
+    {\tt RX\_LAT} &                                    & The latitude of the RX station. & {\tt 42.5625}\\\cline{1-1}\cline{3-4}
+    {\tt RX\_LON} &                                    & The longitude of the RX station. & {\tt -88.0417}\\\cline{1-1}\cline{3-4}
+    {\tt TX\_LAT} &                                    & The latitude of the TX station. & {\tt 40.8542}\\\cline{1-1}\cline{3-4}
+    {\tt TX\_LON} &                                    & The longitude of the TX station. & {\tt -81.3750}\\\hline
   \end{tabulary}
-\end{center}
+
+  \caption{The input data fields for the simulation.}
+  \label{tbl:input_fields}
+\end{table}
 
 Below is an example row from an input file:
 
@@ -280,10 +281,7 @@ Below is an example row from an input file:
 
 Once the correct input files have been created (or possibly generated), they
 should be placed into the {\tt ./jobs} sub-directory of the simulation tool's
-directory. If no such directory exists, the specific version of the simulation
-tool may use another method of inputting data. In such cases, please refer to
-\autoref{sec:extensions} or to the accompanying {\tt README} file for the
-simulation tool.
+directory.
 
 \subsection{Output}
 \label{sec:usage:output}
