@@ -93,16 +93,16 @@ path computation API.
   (manuel.cervera@dsto.defence.gov.au). This toolbox is available by request
   from its author.''}
 
-\subsection{IRI}
-\label{sec:dependencies:iri}
+% \subsection{IRI}
+% \label{sec:dependencies:iri}
 
-The International Reference Ionosphere (IRI)\footnotemark is a ionospheric model
-developed by the Committee on Space Research (COSPAR) and International Union of
-Radio Science (URSI). It is periodically updated to incorporate new
-measurements. It generates monthly averages for several ionospheric measurements
-including electron density, and electron and ion temperatures.
+% The International Reference Ionosphere (IRI)\footnotemark is a ionospheric model
+% developed by the Committee on Space Research (COSPAR) and International Union of
+% Radio Science (URSI). It is periodically updated to incorporate new
+% measurements. It generates monthly averages for several ionospheric measurements
+% including electron density, and electron and ion temperatures.
 
-\footnotetext{\url{http://irimodel.org/}}
+% \footnotetext{\url{http://irimodel.org/}}
 
 \subsection{SAMI3}
 \label{sec:dependencies:sami3}
@@ -163,11 +163,11 @@ receive a direct copy. Once a copy of PHaRLAP is acquired, it can be installed
 anywhere that is accessible to the simulation tool as long as the {\tt
   PHARLAP\_DIR} variable is updated appropriately in the execution script.
 
-{\bf IRI}: If the IRI will be used as the ionosphere model there is no need to
-install any additional dependencies as it is already integrated into
-PHaRLAP. However, keep in mind that with most version of the simulation tool
-being designed for SAMI3, some modification of the simulation code will be
-required.
+% {\bf IRI}: If the IRI will be used as the ionosphere model there is no need to
+% install any additional dependencies as it is already integrated into
+% PHaRLAP. However, keep in mind that with most version of the simulation tool
+% being designed for SAMI3, some modification of the simulation code will be
+% required.
 
 {\bf SAMI3}: If SAMI3 will be used as the ionosphere model, then there are a few
 steps required in order to prepare it to work with the simulation tool. After
@@ -255,28 +255,27 @@ filename. This is done using the format {\tt ``<YYYY>-<MM>-<DD>
 Within the input file, the remainder of the input data is stored. This is done
 by entering the data as rows into the file using the Comma-Separated Values
 (CSV) format. The first line of file should be {\tt
-  ``tx\_call,rx\_call,tx\_lat,tx\_lon,rx\_lat,rx\_lon,freq''} (this may vary
-based on the simulation tool version; some versions do not use the {\tt freq}
-column). Each row follows the following format:
+  ``RX\_CALL,TX\_CALL,MHZ,RX\_LAT,RX\_LON,TX\_LAT,TX\_LON''}. Each following row
+uses the format:
 
 \begin{center}
   \begin{tabulary}{\linewidth}{| L | L | L | L |}
     \hline
     {\bf Name} & {\bf Datatype} & {\bf Description} & {\bf Example}\\\hline
-    {\tt tx\_call} & \multirow{2}{*}{alphanumeric string} & The name (or callsign) of the tx station & {\tt AK6VS}\\\cline{1-1}\cline{3-4}
-    {\tt rx\_call} & & The name (or callsign) of the rx station & {\tt N6NC}\\\hline
-    {\tt tx\_lat} & \multirow{5}{*}{floating-point number} & The latitude of the tx station & {\tt 37.71}\\\cline{1-1}\cline{3-4}
-    {\tt tx\_lon} & & The longitude of the tx station & {\tt -122.50}\\\cline{1-1}\cline{3-4}
-    {\tt rx\_lat} & & The latitude of the rx station & {\tt 32.83}\\\cline{1-1}\cline{3-4}
-    {\tt rx\_lon} & & The longitude of the rx station & {\tt -117.33}\\\cline{1-1}\cline{3-4}
-    {\tt freq} & & The frequency of the transmission in $\si{\mega\hertz}$ & {\tt 14.03}\\\hline
+    {\tt RX\_CALL} & \multirow{2}{*}{alphanumeric string} & The name (or callsign) of the rx station & {\tt WE9V}\\\cline{1-1}\cline{3-4}
+    {\tt TX\_CALL} &                                      & The name (or callsign) of the tx station & {\tt N8PW}\\\hline
+    {\tt MHZ} & \multirow{5}{*}{floating-point number} & The frequency of the transmission in $\si{\mega\hertz}$ & {\tt 7.03}\\\cline{1-1}\cline{3-4}
+    {\tt RX\_LAT} &                                    & The latitude of the rx station & {\tt 42.5625}\\\cline{1-1}\cline{3-4}
+    {\tt RX\_LON} &                                    & The longitude of the rx station & {\tt -88.0417}\\\cline{1-1}\cline{3-4}
+    {\tt TX\_LAT} &                                    & The latitude of the tx station & {\tt 40.8542}\\\cline{1-1}\cline{3-4}
+    {\tt TX\_LON} &                                    & The longitude of the tx station & {\tt -81.3750}\\\hline
   \end{tabulary}
 \end{center}
 
 Below is an example row from an input file:
 
 \begin{center}
-  {\tt AK6VS,N6NC,37.71,-122.50,32.83,-117.33,14.03}
+  {\tt WE9V,N8PW,7.03,42.5625,-88.0417,40.8542,-81.3750}
 \end{center}
 
 Once the correct input files have been created (or possibly generated), they
@@ -329,6 +328,12 @@ simulation tool.
 
   \subsection{10-Hop}
   \label{sec:extensions:10hop}
+
+  \subsection{TAPR DCC 2017}
+  \label{sec:extensions:dcc2017}
+
+  \subsection{W2NAF}
+  \label{sec:extensions:w2naf}
 
   % 
   % SAMI3 DATA FORMAT
