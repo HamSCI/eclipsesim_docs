@@ -17,6 +17,7 @@
 
 \usepackage{appendix}
 
+\usepackage{array}
 \usepackage{tabulary}
 \usepackage{multirow}
 
@@ -295,55 +296,62 @@ recorded into the output CSV files. \autoref{tbl:output_fields} details them.
 \begin{table}
   \centering
 
-  \begin{tabulary}{\linewidth}{| L | L |}
+  \begin{tabulary}{\textwidth}{| L | p{20em} |}
     \hline
     
     %
     % Station Information
     %
-    {\tt tx\_call} & ...\\\hline
-    {\tt rx\_call} & ...\\\hline
-    {\tt tx\_lat} & ...\\\hline
-    {\tt tx\_lon} & ...\\\hline
-    {\tt rx\_lat} & ...\\\hline
-    {\tt rx\_lon} & ...\\\hline
-    {\tt freq} & ...\\\hline
+    {\tt tx\_call} & The name (or callsign) of the TX station.\\\hline
+    {\tt rx\_call} & The name (or callsign) o fthe RX station.\\\hline
+    {\tt tx\_lat} & The latitude of the TX station.\\\hline
+    {\tt tx\_lon} & The longitude of the TX station.\\\hline
+    {\tt rx\_lat} & The latitude of the RX station.\\\hline
+    {\tt rx\_lon} & The longitude of the RX station.\\\hline
+    {\tt freq} & The frequency of the transmission in $\si{\mega\hertz}$.\\\hline
 
     %
     % Simulation Results
     %
-    {\tt srch\_rd\_lat} & ...\\\hline
-    {\tt srch\_rd\_lon} & ...\\\hline
-    {\tt srch\_rd\_ground\_range} & ...\\\hline
-    {\tt srch\_rd\_group\_range} & ...\\\hline
-    {\tt srch\_rd\_phase\_path} & ...\\\hline
-    {\tt srch\_rd\_geometric\_path\_length} & ...\\\hline
-    {\tt srch\_rd\_initial\_elev} & ...\\\hline
-    {\tt srch\_rd\_final\_elev} & ...\\\hline
-    {\tt srch\_rd\_apogee} & ...\\\hline
-    {\tt srch\_rd\_gnd\_rng\_to\_apogee} & ...\\\hline
-    {\tt srch\_rd\_plasma\_freq\_at\_apogee} & ...\\\hline
-    {\tt srch\_rd\_virtual\_height} & ...\\\hline
-    {\tt srch\_rd\_effective\_range} & ...\\\hline
-    {\tt srch\_rd\_deviative\_absorption} & ...\\\hline
-    {\tt srch\_rd\_TEC\_path} & ...\\\hline
-    {\tt srch\_rd\_Doppler\_shift} & ...\\\hline
-    {\tt srch\_rd\_Doppler\_spread} & ...\\\hline
-    {\tt srch\_rd\_FAI\_backscatter\_loss} & ...\\\hline
-    {\tt srch\_rd\_frequency} & ...\\\hline
-    {\tt srch\_rd\_nhops\_attempted} & ...\\\hline
-    {\tt srch\_rd\_rx\_power\_0\_dB} & ...\\\hline
-    {\tt srch\_rd\_rx\_power\_dB} & ...\\\hline
-    {\tt srch\_rd\_power\_O\_dB} & ...\\\hline
-    {\tt srch\_rd\_power\_X\_dB} & ...\\\hline
-    {\tt srch\_rd\_hop\_idx} & ...\\\hline
-    {\tt srch\_rd\_apogee\_lat} & ...\\\hline
-    {\tt srch\_rd\_apogee\_lon} & ...\\\hline
+    {\tt srch\_rd\_lat} & The latitude of the end point of the ray.\\\hline
+    {\tt srch\_rd\_lon} & The longitude of the end point of the ray.\\\hline
+    {\tt srch\_rd\_ground\_range} & The ground range of the ray in $\si{\kilo\meter}$.\\\hline
+    {\tt srch\_rd\_group\_range} & The group range of the ray in $\si{\kilo\meter}$.\\\hline
+    {\tt srch\_rd\_phase\_path} & The phase path of the ray in $\si{\kilo\meter}$\\\hline
+    {\tt srch\_rd\_geometric\_path\_length} & The physical distance along ray path in $\si{\kilo\meter}$.\\\hline
+    {\tt srch\_rd\_initial\_elev} & The initial elevation of this hop in degrees.\\\hline
+    {\tt srch\_rd\_final\_elev} & The final elevation of this hop in degrees.\\\hline
+    {\tt srch\_rd\_apogee} & The maximum altitude of the ray in $\si{\kilo\meter}$.\\\hline
+    {\tt srch\_rd\_gnd\_rng\_to\_apogee} & The ground range to the apogee in $\si{\kilo\meter}$.\\\hline
+    {\tt srch\_rd\_plasma\_freq\_at\_apogee} & The plasma frequency at the ray apogee $\si{\mega\hertz}$.\\\hline
+    {\tt srch\_rd\_virtual\_height} & The virtual height of the ray in $\si{\kilo\meter}$.\\\hline
+    {\tt srch\_rd\_effective\_range} & The effective range of the ray in $\si{\meter}$.\\\hline
+    {\tt srch\_rd\_deviative\_absorption} & The ionospheric deviative absorption in dB.\\\hline
+    \multirow{2}{*}{\tt srch\_rd\_TEC\_path} & The integrated electron density along the ray path (number of electrons in $\SI{1}{\square\meter}$ cross-section tube).\\\hline
+    {\tt srch\_rd\_Doppler\_shift} & The Doppler shift in $\si{\hertz}$.\\\hline
+    {\tt srch\_rd\_Doppler\_spread} & The Doppler spread in $\si{\hertz}$.\\\hline
+    \multirow{2}{*}{\tt srch\_rd\_FAI\_backscatter\_loss} & The backscatter loss in dB for the last hop due to field aligned irregularities.\\\hline
+    {\tt srch\_rd\_frequency} & The carrier frequency used for the ray.\\\hline
+    {\tt srch\_rd\_nhops\_attempted} & The number of hops in this ray.\\\hline
+    {\tt srch\_rd\_rx\_power\_0\_dB} & \multirow{4}{*}{\it These fields should be ignored.}\\\cline{1-1}
+    {\tt srch\_rd\_rx\_power\_dB} & \\\cline{1-1}
+    {\tt srch\_rd\_rx\_power\_O\_dB} & \\\cline{1-1}
+    {\tt srch\_rd\_rx\_power\_X\_dB} & \\\hline
+    {\tt srch\_rd\_hop\_idx} & The index for this hop.\\\hline
+    {\tt srch\_rd\_apogee\_lat} & The latitude of the apogee.\\\hline
+    {\tt srch\_rd\_apogee\_lon} & The longitude of the apogee.\\\hline
   \end{tabulary}
 
   \caption{The output data fields for the simulation.}
   \label{tbl:output_fields}
 \end{table}
+
+These output files will be located in the directory specified by the {\tt
+  OUT\_PATH} variable in the execution directory (ensure that this directory
+exists prior to execution or else the simulation will crash). The filename
+indicates the time at which the simulation was executed using the form {\tt
+  ``simulated\_<YYYY>-<MM>-<DD>\_<HH>-<mm>.csv''} (e.g. {\tt
+  ``simulated\_2017-08-21\_16-00.csv''} for August 21, 2017 at 4:00 PM UTC).
 
 %
 % DESIGN
