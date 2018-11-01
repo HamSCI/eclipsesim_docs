@@ -362,7 +362,7 @@ order in which the hops occurred (e.g. 1 being the first hop and 3 being the
 last). In this case, it's also important to realize that the field {\tt
   srch\_rd\_nhops\_attempted} is not necessarily the number of resulting number
 of rows that will appear in the output file. If the maximum number of hops is
-set at 10 for example, but only 3 hops are needed then only 3 rows will appear
+set at 10 for example but if only 3 hops are needed then only 3 rows will appear
 for that ray-trace.
 
 %
@@ -371,8 +371,25 @@ for that ray-trace.
 \section{Design}
 \label{sec:design}
 
+This section discusses the inner-workings of the eclipse simulator
+package. However, it does not discuss how PHaRLAP or any other dependency
+function and instead focuses on how such functionality is being used. Please
+refer to the respective documentation for design details about any dependencies.
+
 \subsection{Rough Pass}
 \label{sec:design:rough}
+
+The most basic functionality of the eclipse simulator package is the initial
+raytrace calculation. Here, PHaRLAP is used to raytrace several ray paths at
+different takeoff angles (the initial angle above the horizon from the
+transmitting station). For a usual simulation, the rays are lauched at
+$\SI{0.5}{\degree}$ increments from $\SI{5}{\degree}$ to
+$\SI{60}{\degree}$. Each ray is simulated for 3 hops. From this set of rays, it
+is possible to determine at which takeoff angle and hop count the ray landed
+closest to the receiver. Two rays are selected: the closest ray that landed
+before the receiver, and the closest ray that landed beyond the receiver. These
+two rays are the boundaries for the ``Fine Pass'' described in
+\autoref{sec:design:fine}.
 
 \subsection{Fine Pass}
 \label{sec:design:fine}
