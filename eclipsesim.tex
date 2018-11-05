@@ -394,6 +394,22 @@ two rays are the boundaries for the ``Fine Pass'' described in
 \subsection{Fine Pass}
 \label{sec:design:fine}
 
+The fine pass works very similarly to the rough pass. Asside from the boundaries
+set by the rough pass, the fine pass is also distinct in that it iterates using
+an increment that is a fifth of the difference between that of the two
+bracketing rays (e.g. if the selected rays have takeoff angles of
+$\SI{10}{\degree}$ and $\SI{10.5}{\degree}$, then the new inrecment would be
+$\SI{0.1}{\degree}$. It is assumed that the two selected takeoff angles are
+within twice the rough increment step from one another (when the rough increment
+is $\SI{0.5}{\degree}$, the difference in takeoff angles cannot be more than
+$\SI{1}{\degree}$).
+
+After the fine pass has been raytraced, linear interpolation is used to finally
+find the ``best'' take-off angle for a transmission between a transmitter and
+receiver. The raytracer is executed with this ``best'' takeoff angle and the
+outputted values are saved to the output CSV file in the format described in
+\autoref{sec:usage:output}.
+
 \subsection{Plotting}
 \label{sec:design:plotting}
 
