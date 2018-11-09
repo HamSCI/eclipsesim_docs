@@ -15,6 +15,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{mathptmx}
 
+\usepackage{graphicx}
+\usepackage{float}
+
 \usepackage{appendix}
 
 \usepackage{array}
@@ -413,16 +416,62 @@ outputted values are saved to the output CSV file in the format described in
 \subsection{Plotting}
 \label{sec:design:plotting}
 
+Plotting is the final major step in the simulation
+program. \autoref{fig:raytrace-sample} shows a sample ray trace plot generated
+by the simulation tool. The y-axis represents the altitude from sea level and
+the x-axis represents the ground range beginning at the transmitter in the
+direction of the reciever. In this plot, we see the raytrace of the ``best''
+takeoff angle highlighted in red while the remaining ray-traces are shown in
+white. The background of the plot represents the Plasma frequency as taken from
+SAMI3 in order to demonstrate where the different ionospheric layers reside. The
+plot is also curved in order to ensure that the ray is properly shown as being
+traced over the horizon. Note that this specific raytrace was done for a single
+hop scenario in which the ground range is relatively short.
+
+Although not demonstrated in this plot, it is important to recall that the
+ground is represented as a prefectly smooth reflector. Therefore, the angle of
+reflection will always be equal to the angle incidence. Diffusion and
+attenuation based on ground composition is not natively supported in PHaRLAP and
+has not been implemented into the simulation itself as of writing.
+
+\begin{figure}
+  \centering
+
+  \includegraphics[width=\linewidth]{raytrace-sample}
+
+  \caption{A sample raytrace plot.}
+  \label{fig:raytrace-sample}
+\end{figure}
+
 %
 % CONCLUSION
 %
 \section{Conclusion}
 \label{sec:conclusion}
 
+This document is an attempt to describe the inner-workings and reasoning behind
+the decision made when developing the eclipse simulation tool. While it attempts
+to be as comprehensive as necessary it assumes that the reader is comfortable
+reading code and has a basic understanding of ionospheric science.
+
+Although the simulation was initially developed for the August 21, 2017 solar
+eclipse and focused on the simulation of amateur ``ham'' radio communications,
+the concepts behind it are fairly generic and thus can similarly be applied to
+any number of ionospheric simulations.
+
+The simulation itself is still being actively developed thus there are features
+not discussed in this document that may be added in later versions of the
+simulation program. The program itself does not maintain any sort of regular
+release cycle and new features are added in an ``as-needed'' basis. Because of
+this, this document is not intended as a definitive and comprehensive
+description of the simulation program. Rather, it is merely intended as an
+introduction and should be accompanied with actively reading of the MATLAB code
+and experimentation with the program.
+
 %
 % REFERENCES
 %
-\newpage
+\pagebreak
 \renewcommand{\bibname}{References}
 \bibliographystyle{abbrvnat}
 \bibliography{eclipsesim}
@@ -435,6 +484,8 @@ outputted values are saved to the output CSV file in the format described in
   % 
   \section{Appendix: SAMI3 Data Format}
   \label{sec:sami3_df}
+
+  {\it To be written \dots}
 
 \end{appendices}
 
